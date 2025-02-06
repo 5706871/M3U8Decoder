@@ -351,7 +351,7 @@ public class M3U8Parser {
     return .uri(line)
   }
   
-  static func parse(string: String, parseHandler: M3U8Decoder.ParseHandler?) throws -> NSMutableDictionary {
+  public static func parse(string: String, parseHandler: M3U8Decoder.ParseHandler?) throws -> NSMutableDictionary {
     var lines = [String]()
     string.enumerateLines { line, stop in
       guard !line.isEmpty else {
