@@ -65,7 +65,7 @@ fileprivate enum Line {
   case uri(String)
 }
 
-final class M3U8Parser: Sendable {
+public final class M3U8Parser: Sendable {
   
   private static let regexExtTag = try! NSRegularExpression(pattern: "^#(EXT[^:]+):?(.*)$", options: [])
   private static let regexAttributes = try! NSRegularExpression(pattern: #"([^=,\s]+)=((\\?"[^\\"]+)|(\\?'[^\\']+)|([^,\s]+))"#)
@@ -354,7 +354,7 @@ final class M3U8Parser: Sendable {
     return .uri(line)
   }
   
-  static func parse(string: String, parseHandler: M3U8Decoder.ParseHandler?) throws -> NSMutableDictionary {
+  public static func parse(string: String, parseHandler: M3U8Decoder.ParseHandler?) throws -> NSMutableDictionary {
     let lines = AtomicArray([String]())
     string.enumerateLines { line, stop in
       guard !line.isEmpty else {
